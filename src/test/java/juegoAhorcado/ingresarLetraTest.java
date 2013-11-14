@@ -3,20 +3,31 @@ package juegoAhorcado;
 import static org.junit.Assert.*;
 import juegoAhorcado.JuegoAhorcado;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ingresarLetraTest {
+	
+	private JuegoAhorcado j;
+	
+	@Before
+	public void setUp(){
+		j = new JuegoAhorcado();
+	}
 
 	@Test
-	public void ingresarUnaletra() {
-		JuegoAhorcado j = new JuegoAhorcado();
+	public void ingresarUnaletraCorrecta() {
 		assertEquals("a", j.ingresarLetra("a"));
 	}
 	
 	@Test
 	public void verificarSiLaLetraExiste(){
-		JuegoAhorcado j = new JuegoAhorcado();
 		assertEquals(true, j.verificarLetra("a"));
+	}
+	
+	@Test
+	public void ingresarUnaletraIncorrecta() {
+		assertEquals("Error, letra incorrecta", j.ingresarLetra("b"));
 	}
 
 }

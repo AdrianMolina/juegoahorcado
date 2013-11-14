@@ -16,11 +16,11 @@ public class juegoAhorcadoServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		JuegoAhorcado j = new JuegoAhorcado();
-		//String hasta = request.getParameter("hasta");
-		//response.getWriter().println(fb.imprimir(Integer.parseInt(hasta)));
+		String letra = request.getParameter("letra");
+		response.getWriter().println(j.jugar(letra));
 		//response.getWriter().println("Se recibio el parametro: " + hasta);
 	}
-	
+	/*
 	public static void main(String[] args) throws Exception{
         Server server = new Server(Integer.valueOf(System.getenv("PORT")));
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -30,5 +30,5 @@ public class juegoAhorcadoServlet extends HttpServlet {
         server.start();
         server.join();   
     }
-
+	 */
 }
