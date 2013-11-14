@@ -1,0 +1,10 @@
+<web-app>
+	<servlet>
+		<servlet-name>juegoAhorcadoServlet</servlet-name>
+		<servlet-class>juegoAhorcado.juegoAhorcadoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>juegoAhorcadoServlet</servlet-name>
+		<url-pattern>/juegoAhorcadoServlet</url-pattern>
+	</servlet-mapping>
+</web-app>
