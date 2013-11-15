@@ -12,12 +12,12 @@ public class JuegoAhorcado {
 	}
 
 	public boolean verificarLetra(String letra) {
-		return letra_predeterminada == letra;
+		return letra_predeterminada.equals(letra);
 	}
 	
 	public String jugar(String letra){
 		String resultado = "";
 		resultado = ingresarLetra(letra);
-		return resultado;
+		return  resultado;
 	}
 }
