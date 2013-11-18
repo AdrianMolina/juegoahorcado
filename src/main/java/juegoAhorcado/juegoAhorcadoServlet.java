@@ -17,7 +17,17 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		JuegoAhorcado j = new JuegoAhorcado();
 		String letra = request.getParameter("letra");
-		response.getWriter().println(j.jugar(letra));
+		String pista = request.getParameter("pista");
+		if(letra.equals("a")){
+			String mensaje = j.jugar(letra, "Basico");
+			response.getWriter().println(j.getNivel());
+			response.getWriter().println(j.getIntentos());
+			response.getWriter().println(mensaje);
+			response.getWriter().println(j.mostrarRespuesta());
+		}
+		if(pista.equals("hola") && letra.equals("") ){
+			response.getWriter().println(pista);
+		}
 		//response.getWriter().println("Se recibio el parametro: " + hasta);
 	}
 	/*

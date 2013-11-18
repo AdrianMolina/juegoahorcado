@@ -17,7 +17,7 @@ public class ingresarLetraTest {
 
 	@Test
 	public void ingresarUnaletraCorrecta() {
-		assertEquals("a", j.ingresarLetra("a"));
+		assertEquals("letra correcta", j.ingresarLetra("a"));
 	}
 	
 	@Test
@@ -28,16 +28,6 @@ public class ingresarLetraTest {
 	@Test
 	public void ingresarUnaletraIncorrecta() {
 		assertEquals("Error, letra incorrecta", j.ingresarLetra("b"));
-	}
-	
-	@Test
-	public void ingresarLetraCorrectaJugando() {
-		assertEquals("a", j.jugar("a"));
-	}
-	
-	@Test
-	public void ingresarLetraInorrectaJugando() {
-		assertEquals("Error, letra incorrecta", j.jugar("b"));
 	}
 	
 
