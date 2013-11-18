@@ -33,13 +33,13 @@ public class ingresarLetraTest {
 	@Test
 	public void mostrarIntentosConletraCorrecta() {
 		j.jugar("a");
-		assertEquals("Intentos: 6\n", j.getIntentos());
+		assertEquals("Intentos restantes: 6\n", j.getIntentos());
 	}
 	
 	@Test
 	public void mostrarIntentosConletraIncorrecta() {
 		j.jugar("z");
-		assertEquals("Intentos: 5\n", j.getIntentos());
+		assertEquals("Intentos restantes: 5\n", j.getIntentos());
 	}
 	
 	@Test
@@ -55,6 +55,6 @@ public class ingresarLetraTest {
 	
 	@Test
 	public void verPistasUsadas(){
-		assertEquals("Pistas: 0/3",j.getPistasUsadas());
+		assertEquals("Pistas usadas: 0/3",j.getPistasUsadas());
 	}
 }
