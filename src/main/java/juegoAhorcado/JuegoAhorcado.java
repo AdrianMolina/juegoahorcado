@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 public class JuegoAhorcado {
 	
-	private ArrayList<String> diccionario = new ArrayList<String>();
-	private String[] palabraActual;
-	private ArrayList<String> palabraRespuesta = new ArrayList<String>();
-	private String nivel = "";
-	private int intentos = 0;
+	private ArrayList<String> diccionario = new ArrayList<String>(); //diccionario donde se van almacenando las palabras
+	private ArrayList<String> pistas = new ArrayList<String>(); //Variable donde se almacenan las pistas
+	private String[] palabraActual; //palabra con la que se va comparando
+	private ArrayList<String> palabraRespuesta = new ArrayList<String>(); //palabra donde se va almacenando los aciertos
+	private String nivel = ""; //se guarda el nivel del juego(basico,intemedio,avanzado)
+	private int intentos = 0; //numero de intentos que le quedan la jugador para adivinar la palabra
+	private int pistasUsadas = 0; //nuemro de pistas usadas
+	private int pistasPermitidas = 0; //limite de pistas permitidas
+	private int posicionPalabra = 0; //numero de la posicion en la que se encuentra la palabra en el diccionario
 	
 	public JuegoAhorcado(){
 	}
@@ -17,6 +21,9 @@ public class JuegoAhorcado {
 		diccionario.add("casa");
 		diccionario.add("pelota");
 		diccionario.add("computadora");
+		pistas.add("lugar donde vives");
+		pistas.add("es redonda");
+		pistas.add("guarda archivos");
 		inicializarPalabras();
 		inicializarNivel(nivel);
 	}
@@ -30,11 +37,9 @@ public class JuegoAhorcado {
 		return dicc;
 	}
 	
-	/*public void mostrarPalabraActual(){
-		for(int i=1; i<palabraActual.length; i++){
-			System.out.println(palabraActual[i]);
-		}
-	}*/
+	public int intentos(){ //esta funcion solo sirve para probar en consola 
+		return intentos;
+	}
 
 	public String mostrarRespuesta(){
 		String resp = "";
@@ -50,6 +55,20 @@ public class JuegoAhorcado {
 	
 	public String getIntentos(){
 		return "Intentos: "+intentos+"\n";
+	}
+	
+	public String getPista(){
+		if(pistasUsadas <= pistasPermitidas){
+			pistasUsadas++;
+			return pistas.get(posicionPalabra)+"\n";
+		}
+		else{
+			return "Se agoto el numero de pistas";
+		}
+	}
+	
+	public String getPistasUsadas(){
+		return "Pistas: "+pistasUsadas+"/"+pistasPermitidas;
 	}
 //FIN_GETS
 	
@@ -90,20 +109,24 @@ public class JuegoAhorcado {
 		for(int i=1; i<palabraActual.length; i++){
 			palabraRespuesta.add("_");
 		}
+		posicionPalabra = num;
 	}
 	
 	private void inicializarNivel(String nivelIngresado){
 		if(nivelIngresado.equals("Basico")){
 	           nivel = nivel + nivelIngresado;
 	           intentos = 6;
+	           pistasPermitidas = 3;
 		}
 	    if(nivelIngresado.equals("Intermedio")){
 	    	   nivel = nivel + "Intermedio";
 	           intentos = 4;
+	           pistasPermitidas = 2;
 	    }
 	    if(nivelIngresado.equals("Avanzado")){
 	    	   nivel = nivel + "Avanzado";
 	           intentos = 2;
+	           pistasPermitidas = 1;
 	    }
 	}
 //FIN_INICIALIZADORES

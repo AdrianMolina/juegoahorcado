@@ -52,4 +52,9 @@ public class ingresarLetraTest {
 		j.guardarPalabraEnDiccionario("barco");
 		assertEquals("casa, pelota, computadora, barco, ",j.getDiccionario());
 	}
+	
+	@Test
+	public void verPistasUsadas(){
+		assertEquals("Pistas: 0/3",j.getPistasUsadas());
+	}
 }
