@@ -3,7 +3,12 @@
 <BODY BGCOLOR=#0080FF>
 <h1>Bienvenido al juego del ahorcado</h1>
 <form action="juegoAhorcadoServlet" method="post">
-	Ingresar letra: <input type="text" name="letra"><br>
+	Seleccionar accion: <select size="1" name="accion">
+						<option>ingresar letra</option>
+						<option>ingresar palabra</option>
+						<option>pedir pista</option>
+						</select> 
+	<input type="text" name="contenido"><br>
 	<input type="submit" value="Enviar">
 </form>
 </BODY>

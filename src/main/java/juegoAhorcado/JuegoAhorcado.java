@@ -54,7 +54,7 @@ public class JuegoAhorcado {
 	}
 	
 	public String getIntentos(){
-		return "Intentos: "+intentos+"\n";
+		return "Intentos restantes: "+intentos+"\n";
 	}
 	
 	public String getPista(){
@@ -68,7 +68,7 @@ public class JuegoAhorcado {
 	}
 	
 	public String getPistasUsadas(){
-		return "Pistas: "+pistasUsadas+"/"+pistasPermitidas;
+		return "Pistas usadas: "+pistasUsadas+"/"+pistasPermitidas;
 	}
 //FIN_GETS
 	
