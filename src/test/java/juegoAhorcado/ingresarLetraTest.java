@@ -12,7 +12,7 @@ public class ingresarLetraTest {
 	
 	@Before
 	public void setUp(){
-		j = new JuegoAhorcado();
+		j = new JuegoAhorcado("Basico");
 	}
 
 	@Test
@@ -30,5 +30,26 @@ public class ingresarLetraTest {
 		assertEquals("Error, letra incorrecta", j.ingresarLetra("b"));
 	}
 	
-
+	@Test
+	public void mostrarIntentosConletraCorrecta() {
+		j.jugar("a");
+		assertEquals("Intentos: 6\n", j.getIntentos());
+	}
+	
+	@Test
+	public void mostrarIntentosConletraIncorrecta() {
+		j.jugar("z");
+		assertEquals("Intentos: 5\n", j.getIntentos());
+	}
+	
+	@Test
+	public void mostrarNivelActual(){
+		assertEquals("Nivel: Basico\n",j.getNivel());
+	}
+	
+	@Test
+	public void ingresarPalabra(){
+		j.guardarPalabraEnDiccionario("barco");
+		assertEquals("casa, pelota, computadora, barco, ",j.getDiccionario());
+	}
 }

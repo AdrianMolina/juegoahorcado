@@ -11,23 +11,30 @@ public class JuegoAhorcado {
 	private int intentos = 0;
 	
 	public JuegoAhorcado(){
+	}
+	
+	public JuegoAhorcado(String nivel){
 		diccionario.add("casa");
 		diccionario.add("pelota");
 		diccionario.add("computadora");
 		inicializarPalabras();
+		inicializarNivel(nivel);
 	}
 	
-	public void mostrarDiccionario(){
+//GETS	
+	public String getDiccionario(){
+		String dicc = "";
 		for(int i=0; i<diccionario.size(); i++){
-			System.out.println(diccionario.get(i));
+			dicc = dicc + diccionario.get(i) + ", ";
 		}
+		return dicc;
 	}
 	
-	public void mostrarPalabraActual(){
+	/*public void mostrarPalabraActual(){
 		for(int i=1; i<palabraActual.length; i++){
 			System.out.println(palabraActual[i]);
 		}
-	}
+	}*/
 
 	public String mostrarRespuesta(){
 		String resp = "";
@@ -44,6 +51,7 @@ public class JuegoAhorcado {
 	public String getIntentos(){
 		return "Intentos: "+intentos+"\n";
 	}
+//FIN_GETS
 	
 	public String ingresarLetra(String letra) {
 		if (verificarLetra(letra))
@@ -65,12 +73,17 @@ public class JuegoAhorcado {
 		return verificacion != 0;
 	}
 	
-	public String jugar(String letra, String nivelIngresado){
-		inicializarNivel(nivelIngresado);
+	public void guardarPalabraEnDiccionario(String palabra){
+		diccionario.add(palabra);
+	}
+	
+//PRINCIPAL	
+	public String jugar(String letra){
 		String mensaje = ingresarLetra(letra);
 		return mensaje+"\n";
 	}
 	
+//INICIALIZADORES
 	private void inicializarPalabras(){
 		int num = (int) (Math.random() * diccionario.size());
 		palabraActual = diccionario.get(num).split("");
@@ -93,4 +106,5 @@ public class JuegoAhorcado {
 	           intentos = 2;
 	    }
 	}
+//FIN_INICIALIZADORES
 }
