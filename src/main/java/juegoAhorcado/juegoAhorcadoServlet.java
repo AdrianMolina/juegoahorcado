@@ -39,7 +39,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			out.println("<H1>");
 			out.println("DICCIONARIO<BR>");
 			j.guardarPalabraEnDiccionario(contenido);
-			out.println(j.getDiccionario());
+			out.println(j.mostrarDiccionario());
 			out.println("<BR>");
 			out.println("</H1>");
 			out.println("</BODY></HTML>");

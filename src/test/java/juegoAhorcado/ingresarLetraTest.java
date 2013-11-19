@@ -50,7 +50,7 @@ public class ingresarLetraTest {
 	@Test
 	public void ingresarPalabra(){
 		j.guardarPalabraEnDiccionario("barco");
-		assertEquals("casa, pelota, computadora, barco, ",j.getDiccionario());
+		assertEquals("casa, pelota, computadora, barco, ",j.mostrarDiccionario());
 	}
 	
 	@Test

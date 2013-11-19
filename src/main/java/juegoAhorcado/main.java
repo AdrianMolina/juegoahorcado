@@ -21,10 +21,11 @@ public class main {
 				String letra;
 				System.out.println("Ingrese una letra: ");
 				letra = scanner.nextLine();
-				j.jugar(letra);
+				String msg = j.jugar(letra);
 				System.out.println(j.getNivel());
 				System.out.println(j.getIntentos());
 				System.out.println(j.getPistasUsadas());
+				System.out.println(msg);
 				System.out.println(j.mostrarRespuesta());
 			}
 			if(opcion.equals("2")){
@@ -34,7 +35,7 @@ public class main {
 				String palabra;
 				palabra = scanner.nextLine();
 				j.guardarPalabraEnDiccionario(palabra);
-				System.out.println(j.getDiccionario());
+				System.out.println(j.mostrarDiccionario());
 			}
 		}
 	}
