@@ -22,7 +22,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		if(accion.equals("ingresar letra")){
 			String mensaje = j.jugar(contenido);
 			out.println("<HTML><HEAD><TITLE>Mostrando resultados del juego</HEAD></TITLE>");
-			out.println("<BODY BGCOLOR=\"#0040FF\">");
+			out.println("<BODY BGCOLOR=\"#0080FF\">");
 			out.println("<H1>"+j.getNivel());
 			out.println("<BR>");
 			out.println(j.getIntentos());
@@ -35,7 +35,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		}
 		if(accion.equals("ingresar palabra")){
 			out.println("<HTML><HEAD><TITLE>Mostrando diccionario</HEAD></TITLE>");
-			out.println("<BODY BGCOLOR=\"#0040FF\">");
+			out.println("<BODY BGCOLOR=\"#0080FF\">");
 			out.println("<H1>");
 			out.println("DICCIONARIO<BR>");
 			j.guardarPalabraEnDiccionario(contenido);
@@ -46,7 +46,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		}
 		if(accion.equals("pedir pista")){
 			out.println("<HTML><HEAD><TITLE>Pistas</HEAD></TITLE>");
-			out.println("<BODY BGCOLOR=\"#0040FF\">");
+			out.println("<BODY BGCOLOR=\"#0080FF\">");
 			out.println("<H1>");
 			out.println("Pista: "+j.getPista());
 			out.println("<BR>");

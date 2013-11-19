@@ -1,15 +1,18 @@
 <HTML>
-<HEAD><TITLE>Ahorcado</TITLE></HEAD>
+<HEAD><TITLE>BIENVENIDO</TITLE></HEAD>
 <BODY BGCOLOR=#0080FF>
-<h1>Bienvenido al juego del ahorcado</h1>
-<form action="juegoAhorcadoServlet" method="post">
-	Seleccionar accion: <select size="1" name="accion">
-						<option>ingresar letra</option>
-						<option>ingresar palabra</option>
-						<option>pedir pista</option>
-						</select> 
-	<input type="text" name="contenido"><br>
-	<input type="submit" value="Enviar">
-</form>
+
+<h1>BIENVENIDO AL JUEGO DEL AHORCADO</h1>
+
+	<h2>Escoger un nivel: </h2>
+	<form action="basico.html" name="Basico">
+		<input type=submit value="Basico">
+	</form>
+	<form action="intermedio.html" name="Intermedio">
+		<input type=submit value="Intermedio">
+	</form>
+	<form action="avanzado.html" name="Avanzado">
+		<input type=submit value="Avanzado">
+	</form>
 </BODY>
 </HTML>

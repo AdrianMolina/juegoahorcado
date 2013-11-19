@@ -6,7 +6,7 @@ import juegoAhorcado.JuegoAhorcado;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ingresarLetraTest {
+public class juegoAhorcadoTest {
 	
 	private JuegoAhorcado j;
 	
