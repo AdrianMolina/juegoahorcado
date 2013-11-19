@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class juegoAhorcadoServlet extends HttpServlet {
+	JuegoAhorcado j = new JuegoAhorcado("Basico");
 	@Override
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
-		JuegoAhorcado j = new JuegoAhorcado("Basico");
 		
 		String accion = request.getParameter("accion");
 		String contenido = request.getParameter("contenido");
