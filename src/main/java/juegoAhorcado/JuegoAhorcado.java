@@ -71,8 +71,13 @@ public class JuegoAhorcado {
 	
 //PRINCIPAL	
 	public String jugar(String letra){
-		String mensaje = ingresarLetra(letra);
-		return mensaje+"\n";
+		if(letra == null){
+			return "Esperando a que ingrese una letra";
+		}
+		else{
+			String mensaje = ingresarLetra(letra);
+			return mensaje+"\n";
+		}
 	}
 	
 	public String ingresarLetra(String letra) {

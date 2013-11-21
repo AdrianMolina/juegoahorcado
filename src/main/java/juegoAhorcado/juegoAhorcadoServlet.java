@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 public class juegoAhorcadoServlet extends HttpServlet {
 	JuegoAhorcado j = new JuegoAhorcado("Basico");
 	@Override
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
-		
-		String accion = request.getParameter("accion");
-		String contenido = request.getParameter("contenido");
-		
-		if(accion.equals("ingresar letra")){
-			String mensaje = j.jugar(contenido);
+			response.setContentType("text/html");
 			out.println("<HTML><HEAD><TITLE>Mostrando resultados del juego</HEAD></TITLE>");
 			out.println("<BODY BGCOLOR=\"#0080FF\">");
+			out.println("<form action=juegoAhorcadoServlet method=post>");
+			out.println("<input type=text name=contenido><br>");
+			out.println("<input type=submit value=Ingresar letra>");
+			out.println("</form>");
+			String contenido = request.getParameter("contenido");
+			out.println(contenido);
+			String mensaje = j.jugar(contenido);
 			out.println("<H1>"+j.getNivel());
 			out.println("<BR>");
 			out.println(j.getIntentos());
@@ -33,7 +34,8 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			out.println(j.mostrarRespuesta()+"</H1>");
 			out.println("<BR>");
 			out.println("</BODY></HTML>");
-		}
+		/*
+		
 		if(accion.equals("ingresar palabra")){
 			out.println("<HTML><HEAD><TITLE>Mostrando diccionario</HEAD></TITLE>");
 			out.println("<BODY BGCOLOR=\"#0080FF\">");
@@ -72,6 +74,6 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		//if(pista.equals("hola") && letra.equals("") ){
 		//	response.getWriter().println(pista);
 		//}
-		//response.getWriter().println("Se recibio el parametro: " + hasta);
+		//response.getWriter().println("Se recibio el parametro: " + hasta);*/
 	}
 }
