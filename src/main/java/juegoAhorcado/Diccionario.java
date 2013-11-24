@@ -43,4 +43,10 @@ public class Diccionario {
 	public Palabra getPalabraObjeto(int posicion){
 		return diccionario.get(posicion);
 	}
+	
+	public char getPistaDeLetra(Palabra palabra){
+		String p = palabra.getPalabra();
+		int num = (int) (Math.random() * p.length());
+		return p.charAt(num);
+	}
 }

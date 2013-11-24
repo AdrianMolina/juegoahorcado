@@ -12,20 +12,16 @@ public class JuegoAhorcado {
 	//variables que se inicializan en el constructor depende del nivel
 	private String nivel = ""; //se guarda el nivel del juego(basico,intemedio,avanzado)
 	private int intentos = 0; //numero de intentos que le quedan la jugador para adivinar la palabra
+	private int aciertos = 0;
+	private int intentosParaGanar;
 	private int pistasPermitidas = 0; //limite de pistas permitidas
-	
 	private int pistasUsadas = 0; //nuemro de pistas usadas
 	
 	public JuegoAhorcado(){
 	}
 	
 	public JuegoAhorcado(String nivel){
-		diccionario.setPalabraEnDiccionario("casa", "categoria");
-		diccionario.setPalabraEnDiccionario("pelota", "categoria");
-		diccionario.setPalabraEnDiccionario("computadora", "categoria");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(0), "lugar donde vives");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(1), "es redonda");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(2), "guarda archivos");
+		inicializarDiccionario();
 		inicializarPalabras();
 		inicializarNivel(nivel);
 	}
@@ -42,6 +38,10 @@ public class JuegoAhorcado {
 	
 	public String getPista(){
 		return pedirPista();
+	}
+	
+	public String getPistaLetra(){
+		return pedirPistaDeLetra();
 	}
 	
 	public String mostrarRespuesta(){
@@ -81,11 +81,24 @@ public class JuegoAhorcado {
 	}
 	
 	public String ingresarLetra(String letra) {
-		if (verificarLetra(letra))
-			return "letra correcta";
-		else
-			intentos--;
-			return "Error, letra incorrecta";
+		if(aciertos != intentosParaGanar){
+			if (intentos > 0){
+				if (verificarLetra(letra)){
+					aciertos++;
+					return "letra correcta";
+				}
+				else{
+					intentos--;
+					return "Error, letra incorrecta";
+				}
+			}
+			else{
+				return "PERDIO!!!";
+			}
+		}
+		else{
+			return "GANO!!!!";
+		}
 	}
 
 	public boolean verificarLetra(String letra) {
@@ -101,6 +114,26 @@ public class JuegoAhorcado {
 	}
 	
 //INICIALIZADORES
+	private void inicializarDiccionario(){
+		diccionario.setPalabraEnDiccionario("casa", "categoria");
+		diccionario.setPalabraEnDiccionario("pelota", "categoria");
+		diccionario.setPalabraEnDiccionario("computadora", "categoria");
+		diccionario.setPalabraEnDiccionario("perro", "animales");
+		diccionario.setPalabraEnDiccionario("gato", "animales");
+		diccionario.setPalabraEnDiccionario("caballo", "animales");
+		diccionario.setPalabraEnDiccionario("arbol", "categoria");
+		diccionario.setPalabraEnDiccionario("mesa", "categoria");
+		diccionario.setPalabraEnDiccionario("televisor", "categoria");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(0), "lugar donde vives");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(1), "es redonda");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(2), "guarda archivos");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(3), "ladra");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(4), "maulla");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(5), "relincha");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(6), "vive en la tierra");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(7), "tiene cuantro patas");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(8), "tiene antenas");
+	}
 	private void inicializarPalabras(){
 		int num = (int) (Math.random() * diccionario.getTamanio());
 		palabraActual = diccionario.getPalabra(num).split("");
@@ -115,16 +148,19 @@ public class JuegoAhorcado {
 	           nivel = nivel + nivelIngresado;
 	           intentos = 6;
 	           pistasPermitidas = 3;
+	           intentosParaGanar = intentos;
 		}
 	    if(nivelIngresado.equals("Intermedio")){
 	    	   nivel = nivel + "Intermedio";
 	           intentos = 4;
 	           pistasPermitidas = 2;
+	           intentosParaGanar = intentos;
 	    }
 	    if(nivelIngresado.equals("Avanzado")){
 	    	   nivel = nivel + "Avanzado";
 	           intentos = 2;
 	           pistasPermitidas = 1;
+	           intentosParaGanar = intentos;
 	    }
 	}
 	
@@ -140,6 +176,16 @@ public class JuegoAhorcado {
 		}
 		else{
 			return "Se agoto el numero de pistas";
+		}
+	}
+	
+	private String pedirPistaDeLetra(){
+		if(pistasAgotadas()){
+			pistasUsadas++;
+			return Character.toString(diccionario.getPistaDeLetra(palabraActualObjeto));
+		}
+		else{
+			return "se agoto el numero de pistas";
 		}
 	}
 }

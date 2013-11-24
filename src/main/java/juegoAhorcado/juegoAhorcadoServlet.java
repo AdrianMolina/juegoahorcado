@@ -16,23 +16,61 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
-			out.println("<HTML><HEAD><TITLE>Mostrando resultados del juego</HEAD></TITLE>");
+			out.println("<HTML><HEAD><TITLE>Ahorcado</TITLE></HEAD>");
+			out.println("<H1>JUEGO DEL AHORCADO</H1>");
 			out.println("<BODY BGCOLOR=\"#0080FF\">");
 			out.println("<form action=juegoAhorcadoServlet method=post>");
-			out.println("<input type=text name=contenido><br>");
-			out.println("<input type=submit value=Ingresar letra>");
+			out.println("<BR>");
+			out.println("<H3>Seleccionar accion: <select size=1 name=accion>");
+			out.println("<option>ingresar letra</option>");
+			out.println("<option>pista de letra</option>");
+			out.println("<option>pista de frase</option>");
+			out.println("</select></H3>&nbsp;");
+			out.println("<input type=text name=contenido>&nbsp;");
+			out.println("<input type=submit value=Aceptar>");
 			out.println("</form>");
 			String contenido = request.getParameter("contenido");
-			out.println(contenido);
-			String mensaje = j.jugar(contenido);
-			out.println("<H1>"+j.getNivel());
-			out.println("<BR>");
-			out.println(j.getIntentos());
-			out.println("<BR>");
-			out.println(mensaje);
-			out.println("<BR>");
-			out.println(j.mostrarRespuesta()+"</H1>");
-			out.println("<BR>");
+			String accion = request.getParameter("accion");
+			//out.println(contenido);
+			//out.println(accion);
+			if(accion == null){
+				out.println("<BR>");
+				String mensaje = j.jugar(contenido);
+				out.println("<H1>"+j.getNivel());
+				out.println("<BR>");
+				out.println(j.getIntentos());
+				out.println("<BR>");
+				out.println(mensaje);
+				out.println("<BR>");
+				out.println(j.mostrarRespuesta()+"</H1>");
+				out.println("<BR>");
+			}
+			else{
+				if(accion.equals("ingresar letra")){
+				out.println("<BR>");
+				String mensaje = j.jugar(contenido);
+				out.println("<H1>"+j.getNivel());
+				out.println("<BR>");
+				out.println(j.getIntentos());
+				out.println("<BR>");
+				out.println(mensaje);
+				out.println("<BR>");
+				out.println(j.mostrarRespuesta()+"</H1>");
+				out.println("<BR>");
+				}
+				if(accion.equals("pista de letra")){
+					out.println("<BR>");
+					out.println("<H1>PISTA: "+j.getPistaLetra()+"</H1>");
+					out.println("<H2>"+j.getPistasUsadas()+"</H2>");
+					out.println("<BR>");
+				}
+				if(accion.equals("pista de frase")){
+					out.println("<BR>");
+					out.println("<H1>PISTA: "+j.getPista()+"</H1>");
+					out.println("<H2>"+j.getPistasUsadas()+"</H2>");
+					out.println("<BR>");
+				}
+			}
 			out.println("</BODY></HTML>");
 		/*
 		
