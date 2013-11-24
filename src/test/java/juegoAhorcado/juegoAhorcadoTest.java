@@ -12,7 +12,8 @@ public class juegoAhorcadoTest {
 	
 	@Before
 	public void setUp(){
-		j = new JuegoAhorcado("Basico");
+		j = new JuegoAhorcado();
+		j.inicializarNivel("Basico");
 	}
 
 	@Test

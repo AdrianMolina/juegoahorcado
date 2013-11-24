@@ -9,11 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class juegoAhorcadoServlet extends HttpServlet {
-	JuegoAhorcado j = new JuegoAhorcado("Basico");
+	
+	JuegoAhorcado j = new JuegoAhorcado();
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String nivel = request.getParameter("nivel");
+		if(nivel != null){
+			j.inicializarNivel(nivel);
+		}
 		PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
 			out.println("<HTML><HEAD><TITLE>Ahorcado</TITLE></HEAD>");
@@ -33,6 +38,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			String accion = request.getParameter("accion");
 			//out.println(contenido);
 			//out.println(accion);
+			//out.println(j.intentosParaGanar);
 			if(accion == null){
 				out.println("<BR>");
 				String mensaje = j.jugar(contenido);
@@ -113,5 +119,12 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		//	response.getWriter().println(pista);
 		//}
 		//response.getWriter().println("Se recibio el parametro: " + hasta);*/
+	}
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		out.println("<HTML><H1>Ahorcado</H1></HTML>");
 	}
 }

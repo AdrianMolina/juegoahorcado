@@ -13,17 +13,19 @@ public class JuegoAhorcado {
 	private String nivel = ""; //se guarda el nivel del juego(basico,intemedio,avanzado)
 	private int intentos = 0; //numero de intentos que le quedan la jugador para adivinar la palabra
 	private int aciertos = 0;
-	private int intentosParaGanar;
+	private int tamanioPalabra;
 	private int pistasPermitidas = 0; //limite de pistas permitidas
 	private int pistasUsadas = 0; //nuemro de pistas usadas
 	
 	public JuegoAhorcado(){
+		inicializarDiccionario();
+		inicializarPalabras();
 	}
 	
 	public JuegoAhorcado(String nivel){
 		inicializarDiccionario();
 		inicializarPalabras();
-		inicializarNivel(nivel);
+		//inicializarNivel(nivel);
 	}
 	
 //SETS
@@ -81,10 +83,9 @@ public class JuegoAhorcado {
 	}
 	
 	public String ingresarLetra(String letra) {
-		if(aciertos != intentosParaGanar){
+		if(aciertos != tamanioPalabra){
 			if (intentos > 0){
 				if (verificarLetra(letra)){
-					aciertos++;
 					return "letra correcta";
 				}
 				else{
@@ -108,6 +109,7 @@ public class JuegoAhorcado {
 				palabraRespuesta.set(i-1,letra);
 				palabraActual[i] = "_";
 				verificacion++;
+				aciertos++;
 			}
 		}
 		return verificacion != 0;
@@ -141,26 +143,24 @@ public class JuegoAhorcado {
 		for(int i=1; i<palabraActual.length; i++){
 			palabraRespuesta.add("_");
 		}
+		tamanioPalabra = palabraActual.length - 1;
 	}
 	
-	private void inicializarNivel(String nivelIngresado){
+	public void inicializarNivel(String nivelIngresado){
 		if(nivelIngresado.equals("Basico")){
 	           nivel = nivel + nivelIngresado;
 	           intentos = 6;
 	           pistasPermitidas = 3;
-	           intentosParaGanar = intentos;
 		}
 	    if(nivelIngresado.equals("Intermedio")){
 	    	   nivel = nivel + "Intermedio";
 	           intentos = 4;
 	           pistasPermitidas = 2;
-	           intentosParaGanar = intentos;
 	    }
 	    if(nivelIngresado.equals("Avanzado")){
 	    	   nivel = nivel + "Avanzado";
 	           intentos = 2;
 	           pistasPermitidas = 1;
-	           intentosParaGanar = intentos;
 	    }
 	}
 	
