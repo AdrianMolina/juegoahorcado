@@ -27,7 +27,7 @@ public class juegoAhorcadoTest {
 	
 	@Test
 	public void ingresarUnaletraIncorrecta() {
-		assertEquals("Error, letra incorrecta", j.ingresarLetra("b"));
+		assertEquals("Error, letra incorrecta", j.ingresarLetra("z"));
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class juegoAhorcadoTest {
 	@Test
 	public void ingresarPalabra(){
 		j.guardarPalabraEnDiccionario("barco");
-		assertEquals("casa, pelota, computadora, barco, ",j.mostrarDiccionario());
+		assertEquals("casa, pelota, computadora, cacatua, gato, caballo, arbol, mesa, celular, barco, ",j.mostrarDiccionario());
 	}
 	
 	@Test

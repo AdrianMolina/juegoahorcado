@@ -118,21 +118,21 @@ public class JuegoAhorcado {
 		diccionario.setPalabraEnDiccionario("casa", "categoria");
 		diccionario.setPalabraEnDiccionario("pelota", "categoria");
 		diccionario.setPalabraEnDiccionario("computadora", "categoria");
-		diccionario.setPalabraEnDiccionario("perro", "animales");
+		diccionario.setPalabraEnDiccionario("cacatua", "animales");
 		diccionario.setPalabraEnDiccionario("gato", "animales");
 		diccionario.setPalabraEnDiccionario("caballo", "animales");
 		diccionario.setPalabraEnDiccionario("arbol", "categoria");
 		diccionario.setPalabraEnDiccionario("mesa", "categoria");
-		diccionario.setPalabraEnDiccionario("televisor", "categoria");
+		diccionario.setPalabraEnDiccionario("celular", "categoria");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(0), "lugar donde vives");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(1), "es redonda");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(2), "guarda archivos");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(3), "ladra");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(3), "tiene alas");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(4), "maulla");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(5), "relincha");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(6), "vive en la tierra");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(7), "tiene cuantro patas");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(8), "tiene antenas");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(8), "tiene antena");
 	}
 	private void inicializarPalabras(){
 		int num = (int) (Math.random() * diccionario.getTamanio());
