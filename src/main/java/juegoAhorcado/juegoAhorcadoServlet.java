@@ -13,11 +13,11 @@ public class juegoAhorcadoServlet extends HttpServlet {
 	JuegoAhorcado j = new JuegoAhorcado();
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nivel = request.getParameter("nivel");
 		if(nivel != null){
-			j.inicializarNivel(nivel);
+			j.inicializarJuego(nivel);
 		}
 		PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
@@ -77,6 +77,9 @@ public class juegoAhorcadoServlet extends HttpServlet {
 					out.println("<BR>");
 				}
 			}
+			out.println("<form action=index.html>");
+			out.println("<input type=submit name=volver value=ReiniciarJuego>");
+			out.println("</form>");
 			out.println("</BODY></HTML>");
 		/*
 		
@@ -119,12 +122,5 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		//	response.getWriter().println(pista);
 		//}
 		//response.getWriter().println("Se recibio el parametro: " + hasta);*/
-	}
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/html");
-		out.println("<HTML><H1>Ahorcado</H1></HTML>");
 	}
 }

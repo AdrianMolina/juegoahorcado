@@ -18,13 +18,11 @@ public class JuegoAhorcado {
 	private int pistasUsadas = 0; //nuemro de pistas usadas
 	
 	public JuegoAhorcado(){
-		inicializarDiccionario();
-		inicializarPalabras();
 	}
 	
 	public JuegoAhorcado(String nivel){
-		inicializarDiccionario();
-		inicializarPalabras();
+		//inicializarDiccionario();
+		//inicializarPalabras();
 		//inicializarNivel(nivel);
 	}
 	
@@ -116,6 +114,13 @@ public class JuegoAhorcado {
 	}
 	
 //INICIALIZADORES
+	public void inicializarJuego(String nivel){
+		reiniciarDatos();
+		inicializarDiccionario();
+		inicializarPalabras();
+		inicializarNivel(nivel);
+	}
+	
 	private void inicializarDiccionario(){
 		diccionario.setPalabraEnDiccionario("casa", "categoria");
 		diccionario.setPalabraEnDiccionario("pelota", "categoria");
@@ -146,7 +151,7 @@ public class JuegoAhorcado {
 		tamanioPalabra = palabraActual.length - 1;
 	}
 	
-	public void inicializarNivel(String nivelIngresado){
+	private void inicializarNivel(String nivelIngresado){
 		if(nivelIngresado.equals("Basico")){
 	           nivel = nivel + nivelIngresado;
 	           intentos = 6;
@@ -162,6 +167,16 @@ public class JuegoAhorcado {
 	           intentos = 2;
 	           pistasPermitidas = 1;
 	    }
+	}
+	
+	private void reiniciarDatos(){
+		nivel = "";
+		intentos = 0;
+		aciertos = 0;
+		pistasPermitidas = 0;
+		pistasUsadas = 0;
+		diccionario = new Diccionario();
+		palabraRespuesta = new ArrayList<String>();
 	}
 	
 //MEOTODOS PRIVADOS(extract methods)
@@ -187,5 +202,9 @@ public class JuegoAhorcado {
 		else{
 			return "se agoto el numero de pistas";
 		}
+	}
+	
+	private void dibujarMuneco(){
+		
 	}
 }
