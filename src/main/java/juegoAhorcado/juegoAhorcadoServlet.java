@@ -22,8 +22,9 @@ public class juegoAhorcadoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
 			out.println("<HTML><HEAD><TITLE>Ahorcado</TITLE></HEAD>");
-			out.println("<H1>JUEGO DEL AHORCADO</H1>");
 			out.println("<BODY BGCOLOR=\"#0080FF\">");
+			out.println("<CENTER>");
+			out.println("<H1>JUEGO DEL AHORCADO</H1>");
 			out.println("<form action=juegoAhorcadoServlet method=post>");
 			out.println("<BR>");
 			out.println("<H3>Seleccionar accion: <select size=1 name=accion>");
@@ -59,10 +60,16 @@ public class juegoAhorcadoServlet extends HttpServlet {
 				out.println("<BR>");
 				out.println(j.getIntentos());
 				out.println("<BR>");
+				out.println("<BR>");
 				out.println(mensaje);
 				out.println("<BR>");
-				out.println(j.mostrarRespuesta()+"</H1>");
 				out.println("<BR>");
+				out.println(j.mostrarRespuesta());
+				out.println("<BR>");
+				out.println("<BR>");
+				out.println(j.letrasUtilizadas()+"</H1>");
+				out.println("<BR>");
+				out.println("<H1><CENTER>"+j.dibujarMuneco()+"</CENTER></H1>");
 				}
 				if(accion.equals("pista de letra")){
 					out.println("<BR>");
@@ -80,47 +87,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			out.println("<form action=index.html>");
 			out.println("<input type=submit name=volver value=ReiniciarJuego>");
 			out.println("</form>");
+			out.println("</CENTER>");
 			out.println("</BODY></HTML>");
-		/*
-		
-		if(accion.equals("ingresar palabra")){
-			out.println("<HTML><HEAD><TITLE>Mostrando diccionario</HEAD></TITLE>");
-			out.println("<BODY BGCOLOR=\"#0080FF\">");
-			out.println("<H1>");
-			out.println("DICCIONARIO<BR>");
-			j.guardarPalabraEnDiccionario(contenido);
-			out.println(j.mostrarDiccionario());
-			out.println("<BR>");
-			out.println("</H1>");
-			out.println("</BODY></HTML>");
-		}
-		if(accion.equals("pedir pista")){
-			out.println("<HTML><HEAD><TITLE>Pistas</HEAD></TITLE>");
-			out.println("<BODY BGCOLOR=\"#0080FF\">");
-			out.println("<H1>");
-			out.println("Pista: "+j.getPista());
-			out.println("<BR>");
-			out.println(j.getPistasUsadas());
-			out.println("<BR>");
-			out.println("</H1>");
-			out.println("</BODY></HTML>");
-		}
-		//String mensaje = j.jugar(letra);
-		//j.guardarPalabraEnDiccionario(letra);
-		//String mensaje = j.jugar(letra);
-		//response.sendRedirect("/pagina.jsp");
-		//out.println(mensaje);
-		//response.sendRedirect("/pagina.html");
-		//String pista = request.getParameter("pista");
-		//if(letra.equals("a")){
-		//String mensaje = j.jugar(letra, "Basico");
-		
-		//response.sendRedirect("/index.html");
-		//out.close();
-		//}
-		//if(pista.equals("hola") && letra.equals("") ){
-		//	response.getWriter().println(pista);
-		//}
-		//response.getWriter().println("Se recibio el parametro: " + hasta);*/
 	}
 }

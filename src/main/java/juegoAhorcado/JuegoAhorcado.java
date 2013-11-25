@@ -11,6 +11,7 @@ public class JuegoAhorcado {
 	private Palabra palabraActualObjeto;
 	//variables que se inicializan en el constructor depende del nivel
 	private String nivel = ""; //se guarda el nivel del juego(basico,intemedio,avanzado)
+	private String letrasUsadas = "";
 	private int intentos = 0; //numero de intentos que le quedan la jugador para adivinar la palabra
 	private int aciertos = 0;
 	private int tamanioPalabra;
@@ -69,6 +70,25 @@ public class JuegoAhorcado {
 		return intentos;
 	}
 	
+	public String letrasUtilizadas(){
+		return "Letras usadas: " + letrasUsadas;
+	}
+
+//DIBUJAR MUÑECO
+	public String dibujarMuneco(){
+		String m = "";
+		if(nivel.equals("Basico")){
+			m = munecoBasico();
+		}
+		if(nivel.equals("Intermedio")){
+			m = munecoIntermedio();
+		}
+		if(nivel.equalsIgnoreCase("Avanzado")){
+			m = munecoAvanzado();
+		}
+		return m;
+	}
+	
 //PRINCIPAL	
 	public String jugar(String letra){
 		if(letra == null){
@@ -102,6 +122,7 @@ public class JuegoAhorcado {
 
 	public boolean verificarLetra(String letra) {
 		int verificacion = 0;
+		letrasUsadas = letrasUsadas + letra + " ";
 		for(int i=1; i<palabraActual.length; i++){
 			if(palabraActual[i].equals(letra)){
 				palabraRespuesta.set(i-1,letra);
@@ -175,6 +196,7 @@ public class JuegoAhorcado {
 		aciertos = 0;
 		pistasPermitidas = 0;
 		pistasUsadas = 0;
+		letrasUsadas = "";
 		diccionario = new Diccionario();
 		palabraRespuesta = new ArrayList<String>();
 	}
@@ -204,7 +226,70 @@ public class JuegoAhorcado {
 		}
 	}
 	
-	private void dibujarMuneco(){
-		
+	private String munecoBasico(){
+		String muneco = "";
+		if(intentos == 5){
+			muneco = muneco + "    O    ";
+		}
+		if(intentos == 4){
+			muneco = muneco + "    O  <BR>"+
+							  "   /   <BR>";
+		}
+		if(intentos == 3){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|   <BR>";
+		}
+		if(intentos == 2){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>";
+		}
+		if(intentos == 1){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>"+
+							  "   /      ";
+		}
+		if(intentos == 0){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>"+
+							  "   / \\   ";
+		}
+		return muneco;
+	}
+	
+	private String munecoIntermedio(){
+		String muneco = "";
+		if(intentos == 3){
+			muneco = muneco + "    O   <BR>"+
+							  "   /    <BR>";
+		}
+		if(intentos == 2){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>";
+		}
+		if(intentos == 1){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>"+
+							  "   /      ";
+		}
+		if(intentos == 0){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>"+
+							  "   / \\   ";
+		}
+		return muneco;
+	}
+	
+	private String munecoAvanzado(){
+		String muneco = "";
+		if(intentos == 1){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>";
+		}
+		if(intentos == 0){
+			muneco = muneco + "    O   <BR>"+
+							  "   /|\\ <BR>"+
+							  "   / \\    ";
+		}
+		return muneco;
 	}
 }
