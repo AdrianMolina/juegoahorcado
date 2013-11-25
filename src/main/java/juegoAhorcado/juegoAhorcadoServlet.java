@@ -25,7 +25,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			out.println("<BODY BGCOLOR=\"#0080FF\">");
 			out.println("<CENTER>");
 			out.println("<H1>JUEGO DEL AHORCADO</H1>");
-			out.println("<form action=juegoAhorcadoServlet method=post>");
+			out.println("<form action=juegoAhorcadoServlet>");
 			out.println("<BR>");
 			out.println("<H3>Seleccionar accion: <select size=1 name=accion>");
 			out.println("<option>ingresar letra</option>");

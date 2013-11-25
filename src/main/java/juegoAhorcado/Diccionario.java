@@ -20,7 +20,7 @@ public class Diccionario {
 	public String getDiccionario(){
 		String dic = "";
 		for(int i=0; i<diccionario.size(); i++){
-			dic = dic + diccionario.get(i).getPalabra() + ", ";
+			dic = dic + diccionario.get(i).getPalabra() + "<BR> ";
 		}
 		return dic;
 	}

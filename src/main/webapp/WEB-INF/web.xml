@@ -7,4 +7,12 @@
 		<servlet-name>juegoAhorcadoServlet</servlet-name>
 		<url-pattern>/juegoAhorcadoServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AdminDiccionarioServlet</servlet-name>
+		<servlet-class>juegoAhorcado.AdminDiccionarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminDiccionarioServlet</servlet-name>
+		<url-pattern>/AdminDiccionarioServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
