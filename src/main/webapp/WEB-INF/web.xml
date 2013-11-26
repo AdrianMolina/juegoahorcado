@@ -15,4 +15,12 @@
 		<servlet-name>AdminDiccionarioServlet</servlet-name>
 		<url-pattern>/AdminDiccionarioServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AdminUsuarioServlet</servlet-name>
+		<servlet-class>juegoAhorcado.AdminUsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminUsuarioServlet</servlet-name>
+		<url-pattern>/AdminUsuarioServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

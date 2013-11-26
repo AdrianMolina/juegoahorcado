@@ -51,7 +51,7 @@ public class juegoAhorcadoTest {
 	@Test
 	public void ingresarPalabra(){
 		j.guardarPalabraEnDiccionario("barco");
-		assertEquals("casa, pelota, computadora, cacatua, gato, caballo, arbol, mesa, celular, barco, ",j.mostrarDiccionario());
+		assertEquals("casa<BR> pelota<BR> computadora<BR> cacatua<BR> gato<BR> caballo<BR> arbol<BR> mesa<BR> celular<BR> barco<BR> ",j.mostrarDiccionario());
 	}
 	
 	@Test

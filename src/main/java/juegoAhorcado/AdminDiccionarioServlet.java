@@ -42,7 +42,7 @@ public class AdminDiccionarioServlet  extends HttpServlet {
 				out.println("<BR>");
 			}
 			out.println("<form action=index.html>");
-			out.println("<input type=submit name=volver value=ReiniciarJuego>");
+			out.println("<input type=submit name=volver value=Volver>");
 			out.println("</form>");
 			out.println("</CENTER>");
 			out.println("</BODY></HTML>");

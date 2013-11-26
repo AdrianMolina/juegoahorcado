@@ -34,7 +34,7 @@ public class diccionarioTest {
 	
 	@Test
 	public void mostrarTodasLasPalabrasDelDiccionario(){
-		assertEquals("perro, ", d.getDiccionario());
+		assertEquals("perro<BR> ", d.getDiccionario());
 	}
 
 }
