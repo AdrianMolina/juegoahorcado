@@ -17,6 +17,7 @@ public class JuegoAhorcado {
 	private int tamanioPalabra;
 	private int pistasPermitidas = 0; //limite de pistas permitidas
 	private int pistasUsadas = 0; //nuemro de pistas usadas
+	private int tiempo;
 	
 	public JuegoAhorcado(){
 	}
@@ -73,6 +74,14 @@ public class JuegoAhorcado {
 	public String letrasUtilizadas(){
 		return "Letras usadas: " + letrasUsadas;
 	}
+	
+	public int getTiempoRestante(){
+		return tiempo;
+	}
+	
+	public String printTiempo(){
+		return "" + tiempo;
+	}
 
 //DIBUJAR MUÑECO
 	public String dibujarMuneco(){
@@ -87,6 +96,11 @@ public class JuegoAhorcado {
 			m = munecoAvanzado();
 		}
 		return m;
+	}
+	
+//RELOJ
+	public void reducirTiempo(int sec){
+		tiempo = tiempo - sec;
 	}
 	
 //PRINCIPAL	
@@ -140,6 +154,10 @@ public class JuegoAhorcado {
 		inicializarDiccionario();
 		inicializarPalabras();
 		inicializarNivel(nivel);
+	}
+	
+	public void inicializarTiempo(){
+		tiempo = 60;
 	}
 	
 	private void inicializarDiccionario(){

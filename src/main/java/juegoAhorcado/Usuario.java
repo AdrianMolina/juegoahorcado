@@ -9,6 +9,12 @@ public class Usuario implements java.io.Serializable {
 	private String login;
 	private String password;
 	
+	public Usuario(){
+		this.nombre = "";
+		this.login = "";
+		this.password = "";
+	}
+	
 	public void setUsuario(String nombre, String login, String password){
 		this.nombre = nombre;
 		this.login = login;
@@ -19,13 +25,22 @@ public class Usuario implements java.io.Serializable {
 		return this.nombre;
 	}
 	
+	public String getLogin(){
+		return this.login;
+	}
+	
+	public String getPass(){
+		return this.password;
+	}
+	
 	public void guardarDatos(){
 		try
 		{
-			FileOutputStream fileOut = new FileOutputStream("usuario.ser");
+			FileOutputStream fileOut = new FileOutputStream("usuario.ser",true);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(this);
 			out.close();
+			fileOut.close();
 			System.out.println("datos guardados en usuario.ser");
 		}catch (IOException i)
 		{
