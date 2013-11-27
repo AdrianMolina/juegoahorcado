@@ -14,14 +14,7 @@ public class AdminUsuario {
 		cargarUsuarios();
 		usuarioLogueado = null;
 	}
-	
-	public void guardarUsuario(String nombre, String login, String password){
-		Usuario u = new Usuario();
-		u.setUsuario(nombre, login, password);
-		usuarios.add(u);
-		u.guardarDatos();
-	}
-	
+		
 	public String UsuariosSize(){
 		String size = "";
 		return size + usuarios.size();
@@ -31,8 +24,22 @@ public class AdminUsuario {
 		return usuarioLogueado.getLogin();
 	}
 	
+	public String mostrarDatosUsuarioLogueado(){
+		return "Nombre: "+usuarioLogueado.getNombre()+"<BR>"+
+				"Login: "+usuarioLogueado.getLogin()+"<BR>"+
+				"Password: "+usuarioLogueado.getPass()+"<BR>";
+	}
+	
 	public Usuario getUsuario(){
 		return usuarioLogueado;
+	}
+	
+	public void guardarUsuario(String nombre, String login, String password){
+		Usuario u = new Usuario();
+		u.setUsuario(nombre, login, password);
+		usuarios.add(u);
+		u.guardarDatos();
+		usuarioLogueado = u;
 	}
 	
 	public void editarUsuario(String nombre, String login, String pass){
@@ -45,7 +52,7 @@ public class AdminUsuario {
 	
 	public String login(String login, String password){
 		String confirmacion = "";
-		for(int i = 0; i < usuarios.size(); i++){
+		for(int i = 1; i < usuarios.size(); i++){
 			if((login.equals(usuarios.get(i).getLogin())) && (password.equals(usuarios.get(i).getPass()))){
 				confirmacion = confirmacion + "Usuario logueado exitosamente";
 				usuarioLogueado = usuarios.get(i);

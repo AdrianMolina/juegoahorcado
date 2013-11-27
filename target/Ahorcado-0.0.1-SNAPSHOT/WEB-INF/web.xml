@@ -23,12 +23,4 @@
 		<servlet-name>AdminUsuarioServlet</servlet-name>
 		<url-pattern>/AdminUsuarioServlet</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>juegoAhorcadoContraRelojServlet</servlet-name>
-		<servlet-class>juegoAhorcado.juegoAhorcadoContraRelojServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>juegoAhorcadoContraRelojServlet</servlet-name>
-		<url-pattern>/juegoAhorcadoContraRelojServlet</url-pattern>
-	</servlet-mapping>
 </web-app>

@@ -20,33 +20,27 @@ public class AdminUsuarioServlet extends HttpServlet {
 		String register = request.getParameter("register");
 		String loginn = request.getParameter("loginn");
 		String edit = request.getParameter("edit");
+		String showall = request.getParameter("showall");
 		
 		response.setContentType("text/html");
 		out.println("<HTML><HEAD><TITLE>Registro</TITLE></HEAD>");
 		out.println("<BODY BGCOLOR=\"#0080FF\">");
-		if(au.getUsuario() != null){
-			out.println("<H2>"+au.usuarioLogueado()+"</H2>");
-		}
+
 		if(register != null){
 			String nombre = request.getParameter("nombre");
 			String login = request.getParameter("login");
 			String pass = request.getParameter("pass");
-			
-			out.println("<H1>Lista de usuarios</H1>");
-			
 			au.guardarUsuario(nombre, login, pass);
-			out.println("<H1>"+au.listaDeUsuarios()+"</H1>");	
+			out.println("<H1>"+au.mostrarDatosUsuarioLogueado()+"</H1>");	
 		}
 		if(loginn != null){
 			String loginuser = request.getParameter("loginuser");
 			String pass = request.getParameter("pass");
 			if(au.login(loginuser,pass).equals("Usuario logueado exitosamente")){
 				out.println("<H2>"+"Usuario logueado exitosamente"+"</H2>");
-				response.sendRedirect("jugar.html");
 			}
 			else{
-				//response.sendRedirect("login.html");
-				out.println(au.UsuariosSize());
+				response.sendRedirect("login.html");
 			}
 		}
 		if(edit != null){
@@ -55,14 +49,25 @@ public class AdminUsuarioServlet extends HttpServlet {
 				String logineditar = request.getParameter("logineditar");
 				String passeditar = request.getParameter("passeditar");
 				au.editarUsuario(nombreeditar, logineditar, passeditar);
+				out.println("<H1>"+au.mostrarDatosUsuarioLogueado()+"</H1>");
 			}
 			else{
 				response.sendRedirect("login.html");
 			}
 		}
-			out.println("<form action=index.html>");
-			out.println("<input type=submit name=volver value=Volver>");
-			out.println("</form>");
-			out.println("</BODY></HTML>");
+		if(showall != null){
+			if(au.getUsuario() != null){
+				out.println("<H2>Usuario logueado: "+au.usuarioLogueado()+"</H2>");
+			}
+			else{
+				out.println("<H2>Usuario logueado: Ningun usuario se encuentra logueado actualmente</H2>");
+			}
+			out.println("<H1>Lista de Usuarios</H1>");
+			out.println("<H1><CENTER>"+au.listaDeUsuarios()+"</CENTER></H1>");
+		}
+		out.println("<form action=index.html>");
+		out.println("<input type=submit name=volver value=Volver>");
+		out.println("</form>");
+		out.println("</BODY></HTML>");
 	}
 }

@@ -9,7 +9,8 @@ public class main {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Ingrese el nivel que desea jugar (Basico,Intermedio,Avanzado): ");
 		nivel = scanner.nextLine();
-		JuegoAhorcado j = new JuegoAhorcado(nivel);
+		JuegoAhorcado j = new JuegoAhorcado();
+		j.inicializarJuego(nivel);
 		while(j.intentos() != 0){
 			String opcion;
 			System.out.println("Elija una opcion: ");
