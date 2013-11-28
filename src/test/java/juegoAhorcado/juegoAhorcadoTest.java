@@ -14,6 +14,7 @@ public class juegoAhorcadoTest {
 	public void setUp(){
 		j = new JuegoAhorcado();
 		j.inicializarJuego("Basico");
+		j.inicializadorPalabraParaTest("arbol");
 	}
 
 	@Test
@@ -58,4 +59,90 @@ public class juegoAhorcadoTest {
 	public void verPistasUsadas(){
 		assertEquals("Pistas usadas: 0/3",j.getPistasUsadas());
 	}
+	
+	@Test
+	public void noIngresarLetraAlJugar(){
+		assertEquals("Esperando a que ingrese una letra", j.jugar(null));
+	}
+	
+	@Test
+	public void ganarJuego(){
+		j.jugar("a");
+		j.jugar("r");
+		j.jugar("b");
+		j.jugar("o");
+		j.jugar("l");
+		assertEquals("GANO!!!!\n", j.jugar(""));
+	}
+	
+	@Test
+	public void perderJuego(){
+		j.jugar("x");
+		j.jugar("y");
+		j.jugar("z");
+		j.jugar("f");
+		j.jugar("t");
+		j.jugar("q");
+		assertEquals("PERDIO!!!\n", j.jugar(""));
+	}
+	
+	@Test
+	public void dibujarMunecoSinEquivocarse(){
+		assertEquals("",j.dibujarMuneco());
+	}
+	
+	@Test
+	public void dibujarMunecoConUnaEquivocacion(){
+		j.jugar("z");
+		assertEquals("    O    ",j.dibujarMuneco());
+	}
+	
+	@Test
+	public void dibujarMunecoConDosEquivocaciones(){
+		j.jugar("z");
+		j.jugar("v");
+		assertEquals("    O  <BR>   /   <BR>",j.dibujarMuneco());
+	}
+	
+	@Test
+	public void dibujarMunecoCuandoSePerdio(){
+		j.jugar("z");
+		j.jugar("v");
+		j.jugar("c");
+		j.jugar("t");
+		j.jugar("m");
+		j.jugar("x");
+		assertEquals("    O   <BR>   /|\\ <BR>   / \\   ",j.dibujarMuneco());
+	}
+	
+	@Test
+	public void mostraraPuntuacionConTresAciertos(){
+		j.jugar("a");
+		j.jugar("r");
+		j.jugar("b");
+		assertEquals("Puntuacion: 30", j.getPuntuacion());
+	}
+	
+	@Test
+	public void mostrarPuntuacionPerfectaMasBono(){
+		j.jugar("a");
+		j.jugar("r");
+		j.jugar("b");
+		j.jugar("o");
+		j.jugar("l");
+		j.jugar("");
+		assertEquals("Puntuacion: 80", j.getPuntuacion());
+	}
+	
+	@Test
+	public void bonoDePuntuacion(){
+		j.jugar("a");
+		j.jugar("r");
+		j.jugar("b");
+		j.jugar("o");
+		j.jugar("l");
+		j.jugar("");
+		assertEquals("Bono de puntuacion: 30", j.getBonoPuntuacion());
+	}
+	
 }

@@ -164,14 +164,22 @@ public class JuegoAhorcado {
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(3), "tiene alas");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(4), "maulla");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(5), "relincha");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(6), "vive en la tierra");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(6), "tiene hojas");
 		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(7), "tiene cuantro patas");
-		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(8), "tiene antena");
+		diccionario.setPistaEnPalabra(diccionario.getPalabraObjeto(8), "sirve para hablar");
 	}
 	private void inicializarPalabras(){
 		int num = (int) (Math.random() * diccionario.getTamanio());
 		palabraActual = diccionario.getPalabra(num).split("");
 		palabraActualObjeto = diccionario.getPalabraObjeto(num);
+		for(int i=1; i<palabraActual.length; i++){
+			palabraRespuesta.add("_");
+		}
+		tamanioPalabra = palabraActual.length - 1;
+	}
+	
+	public void inicializadorPalabraParaTest(String palabra){
+		palabraActual = palabra.split("");
 		for(int i=1; i<palabraActual.length; i++){
 			palabraRespuesta.add("_");
 		}

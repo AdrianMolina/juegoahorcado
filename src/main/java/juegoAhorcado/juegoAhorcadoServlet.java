@@ -37,9 +37,7 @@ public class juegoAhorcadoServlet extends HttpServlet {
 			out.println("</form>");
 			String contenido = request.getParameter("contenido");
 			String accion = request.getParameter("accion");
-			//out.println(contenido);
-			//out.println(accion);
-			//out.println(j.intentosParaGanar);
+			
 			if(accion == null){
 				out.println("<BR>");
 				String mensaje = j.jugar(contenido);
