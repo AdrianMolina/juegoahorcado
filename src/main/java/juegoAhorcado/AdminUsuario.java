@@ -66,6 +66,10 @@ public class AdminUsuario {
 		}
 	}
 	
+	public void logout(){
+		usuarioLogueado = null;
+	}
+	
 	public String listaDeUsuarios(){
 		String lista= "";
 		for(int i = 0; i < usuarios.size(); i++){

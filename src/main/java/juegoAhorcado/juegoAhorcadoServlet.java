@@ -47,6 +47,10 @@ public class juegoAhorcadoServlet extends HttpServlet {
 				out.println("<BR>");
 				out.println(j.getIntentos());
 				out.println("<BR>");
+				out.println(j.getPuntuacion());
+				out.println("<BR>");
+				out.println(j.getBonoPuntuacion());
+				out.println("<BR>");
 				out.println(mensaje);
 				out.println("<BR>");
 				out.println(j.mostrarRespuesta()+"</H1>");
@@ -59,6 +63,10 @@ public class juegoAhorcadoServlet extends HttpServlet {
 				out.println("<H1>"+j.getNivel());
 				out.println("<BR>");
 				out.println(j.getIntentos());
+				out.println("<BR>");
+				out.println(j.getPuntuacion());
+				out.println("<BR>");
+				out.println(j.getBonoPuntuacion());
 				out.println("<BR>");
 				out.println("<BR>");
 				out.println(mensaje);

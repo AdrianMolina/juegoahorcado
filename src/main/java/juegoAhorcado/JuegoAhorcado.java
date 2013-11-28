@@ -17,6 +17,8 @@ public class JuegoAhorcado {
 	private int tamanioPalabra;
 	private int pistasPermitidas = 0; //limite de pistas permitidas
 	private int pistasUsadas = 0; //nuemro de pistas usadas
+	private int puntuacion;
+	private int bono;
 	
 	public JuegoAhorcado(){
 	}
@@ -67,6 +69,13 @@ public class JuegoAhorcado {
 	public String letrasUtilizadas(){
 		return "Letras usadas: " + letrasUsadas;
 	}
+	
+	public String getPuntuacion(){
+		return "Puntuacion: "+puntuacion;
+	}
+	public String getBonoPuntuacion(){
+		return "Bono de puntuacion: "+bono;
+	}
 
 //DIBUJAR MUÑECO
 	public String dibujarMuneco(){
@@ -101,6 +110,7 @@ public class JuegoAhorcado {
 					return "letra correcta";
 				}
 				else{
+					puntuacion-=10;
 					intentos--;
 					return "Error, letra incorrecta";
 				}
@@ -110,6 +120,7 @@ public class JuegoAhorcado {
 			}
 		}
 		else{
+			bonoPuntaje();
 			return "GANO!!!!";
 		}
 	}
@@ -123,6 +134,7 @@ public class JuegoAhorcado {
 				palabraActual[i] = "_";
 				verificacion++;
 				aciertos++;
+				puntuacion += 10;
 			}
 		}
 		return verificacion != 0;
@@ -191,6 +203,8 @@ public class JuegoAhorcado {
 		pistasPermitidas = 0;
 		pistasUsadas = 0;
 		letrasUsadas = "";
+		puntuacion = 0;
+		bono = 0;
 		diccionario = new Diccionario();
 		palabraRespuesta = new ArrayList<String>();
 	}
@@ -217,6 +231,21 @@ public class JuegoAhorcado {
 		}
 		else{
 			return "se agoto el numero de pistas";
+		}
+	}
+	
+	private void bonoPuntaje(){
+		if(nivel.equals("Basico") && intentos == 6){
+			bono = 30;
+			puntuacion += 30;
+		}
+		if(nivel.equals("Intermedio") && intentos == 4){
+			bono = 50;
+			puntuacion += 50;
+		}
+		if(nivel.equals("Avanzado") && intentos == 2){
+			bono = 100;
+			puntuacion += 100;
 		}
 	}
 	

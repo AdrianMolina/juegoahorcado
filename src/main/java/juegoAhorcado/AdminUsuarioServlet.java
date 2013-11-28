@@ -21,6 +21,7 @@ public class AdminUsuarioServlet extends HttpServlet {
 		String loginn = request.getParameter("loginn");
 		String edit = request.getParameter("edit");
 		String showall = request.getParameter("showall");
+		String logoutt = request.getParameter("logoutt");
 		
 		response.setContentType("text/html");
 		out.println("<HTML><HEAD><TITLE>Registro</TITLE></HEAD>");
@@ -42,6 +43,10 @@ public class AdminUsuarioServlet extends HttpServlet {
 			else{
 				response.sendRedirect("login.html");
 			}
+		}
+		if(logoutt != null){
+			au.logout();
+			response.sendRedirect("index.html");
 		}
 		if(edit != null){
 			if(au.getUsuario() != null){
